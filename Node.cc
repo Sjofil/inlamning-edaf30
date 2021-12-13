@@ -3,7 +3,7 @@
 #include <vector>
 #include <limits>
 using std::string;
-Node::Node(const std::string& name):name(name), value(std::numeric_limits<int>::max()){}
+Node::Node(const std::string& name):name(name), value(max_value){}
 
 string Node::getName() const {return name;}
 
@@ -13,5 +13,5 @@ int Node::getValue() const {return value;}
 
 void Node::addEdge(Node* destination, int length){edges.push_back(Edge(destination, length));}
 
-std::vector<Edge>& Node::getEdges() {return edges;}
+std::vector<Edge>& Node::getEdges(){return edges;}
 
