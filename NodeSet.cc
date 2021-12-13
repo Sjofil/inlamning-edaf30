@@ -10,7 +10,6 @@ using std::string;
 NodeSet::NodeSet(){}
 
 void NodeSet::add(Node* node){
-    //om vectorn är tom push back
     if(!contains(node->getName())){
         nodes.push_back(node);
     }
