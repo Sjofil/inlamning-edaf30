@@ -21,12 +21,13 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = test_graph_small
+PROGS = test_graph_small test_nodeset
 
 all: $(PROGS)
 
 
 test_graph_small: Node.o Edge.o test.o test_graph_small.o
+test_nodeset:  Node.o Edge.o NodeSet.o test_nodeset.o
 
 
 # Phony targets
