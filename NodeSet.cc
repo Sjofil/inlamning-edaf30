@@ -19,7 +19,7 @@ Node* NodeSet::removeMin(){
     Node* n = nullptr;
     int min_value = std::numeric_limits<int>::max();
     int pos = -1;
-    for(Node* i : nodes){
+    for(auto const &i : nodes){
         if(i->getValue() < min_value){
             min_value = i->getValue();
             n = i;

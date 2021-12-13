@@ -36,14 +36,14 @@ void test()
     assert(flyinge.getValue() == 16);
 
 
-#ifdef INFO
+
     cout << "----\nAll distances from Lund:\n";
 
     for(auto& t : {lund, dalby, sandby, hallestad, veberod, flyinge}) {
         cout << t.getName() << " : " << t.getValue() << " ";
         cout << endl;
     }
-#endif
+
     cout << "test_dijkstra passed" << endl;
 }
 
