@@ -28,7 +28,7 @@ static const int max_value=std::numeric_limits<int>::max();
 
 private:
 std::string name;
-int value;
+int value{max_value};
 std::vector<Edge> edges;
 };
 

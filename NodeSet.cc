@@ -17,13 +17,22 @@ void NodeSet::add(Node* node){
 }
 
 Node* NodeSet::removeMin(){
-    Node* last = nodes[nodes.size()-1];
-    nodes.pop_back();
-    return last;
+    Node* n = nullptr;
+    int min_value = std::numeric_limits<int>::max();
+    int pos = -1;
+    for(Node* i : nodes){
+        if(i->getValue() < min_value){
+            min_value = i->getValue();
+            n = i;
+            pos++;
+        }
+    }
+    nodes.erase(nodes.begin()+pos);
+    return n;
+    
 }
 
 bool NodeSet::contains(string a){
-    int counter=0;
     for(Node* node: nodes){
         if(node->getName()==a){
             return true;

@@ -10,23 +10,23 @@ DEPFLAGS = -MT $@ -MMD -MP -MF $*.d
 # Define preprocessor, compiler, and linker flags. Uncomment the # lines
 # if you use clang++ and wish to use libc++ instead of GNU's libstdc++.
 # -g is for debugging.
-CPPFLAGS =  -std=c++11 -I.
+CPPFLAGS =  -std=c++11 -I. -fsanitize=address
 CXXFLAGS =  -O2 -Wall -Wextra -pedantic-errors -Wold-style-cast 
 CXXFLAGS += -std=c++11 
 CXXFLAGS += -g
 CXXFLAGS += $(DEPFLAGS)
-LDFLAGS =   -g 
+LDFLAGS =   -g  -fsanitize=address
 #CPPFLAGS += -stdlib=libc++
 #CXXFLAGS += -stdlib=libc++
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = test_graph_small test_nodeset
+PROGS = test_nodeset
 
 all: $(PROGS)
 
 
-test_graph_small: Node.o Edge.o test.o test_graph_small.o
+#test_graph_small: Node.o Edge.o test.o test_graph_small.o
 test_nodeset:  Node.o Edge.o NodeSet.o test_nodeset.o
 
 
@@ -35,7 +35,7 @@ test_nodeset:  Node.o Edge.o NodeSet.o test_nodeset.o
 
 # Standard clean
 clean:
-	rm -f *.o $(PROGS)
+	rm -f *.o *.d$(PROGS)
 
 distclean: clean
 	rm *.d

@@ -3,7 +3,7 @@
 #include <vector>
 #include <limits>
 using std::string;
-Node::Node(const std::string& name):name(name), value(max_value){}
+Node::Node(const std::string& name):name(name){}
 
 string Node::getName() const {return name;}
 
