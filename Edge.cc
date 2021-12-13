@@ -1,17 +1,11 @@
-#include <vector>
-#include <string>
 #include "Edge.h"
 #include "Node.h"
 
+using std::string;
 
-   Edge::Edge(Node* destination, int length): dest{destination}, length(length) {}
+Edge::Edge(Node* destination, int length):destination(destination), length(length){}
 
+Node* Edge::getDestination(){return destination;}
 
-   Node* Edge::getDestination(){
-       return dest.getName();
+int Edge::getLength() const{return length;}
 
-   }
-
-   int Edge::getLength() const{
-       return length;
-   }
