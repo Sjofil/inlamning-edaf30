@@ -21,13 +21,15 @@ LDFLAGS =   -g  -fsanitize=address
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = test_nodeset
+#PROGS = test_nodeset
+PROGS = test_dijkstra
 
 all: $(PROGS)
 
 
 #test_graph_small: Node.o Edge.o test.o test_graph_small.o
-test_nodeset:  Node.o Edge.o NodeSet.o test_nodeset.o
+#test_nodeset:  Node.o Edge.o NodeSet.o test_nodeset.o
+test_dijkstra:  Node.o NodeSet.o test_dijkstra.o Edge.o
 
 
 # Phony targets
@@ -35,7 +37,7 @@ test_nodeset:  Node.o Edge.o NodeSet.o test_nodeset.o
 
 # Standard clean
 clean:
-	rm -f *.o *.d$(PROGS)
+	rm -f *.o *.d $(PROGS)
 
 distclean: clean
 	rm *.d

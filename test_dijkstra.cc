@@ -4,6 +4,7 @@
 #include "dijkstra.h"
 #include "Node.h"
 #include "NodeSet.h"
+#include "Edge.h"
 using std::cout;
 using std::endl;
 

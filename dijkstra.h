@@ -1,3 +1,4 @@
+#include "Node.h"
 
 
 /** Dijkstras algoritm. Varje nod som kan nås från start ges ett värde,
