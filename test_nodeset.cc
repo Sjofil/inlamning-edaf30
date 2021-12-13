@@ -22,7 +22,7 @@ void test()
 
 
     assert(ns.removeMin() == &a);
-     std::cout << "begin testing";
+    std::cout << "begin testing";
     assert(ns.removeMin() == &b);
     assert(ns.removeMin() == &c);
     std::cout << "removeMin() working fine";

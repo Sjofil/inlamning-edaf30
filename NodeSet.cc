@@ -4,13 +4,15 @@
 #include "Node.h"
 #include <algorithm>
 using std::string;
+
+
 NodeSet::NodeSet(){}
 
 void NodeSet::add(Node* node){
     //om vectorn är tom push back
     if(isEmpty()){
         nodes.push_back(node);
-    } else {        //om vectorn inte är tom, håll vectorn sorterad i storleksordning med minsta objekten längst bak
+    } else if(!contains(node->getName())) {        //om vectorn inte är tom, håll vectorn sorterad i storleksordning med minsta objekten längst bak
          int counter=nodes.size()-1;
          while(nodes[counter]->getValue() < node->getValue()){
              counter--;

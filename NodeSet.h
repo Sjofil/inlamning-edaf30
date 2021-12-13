@@ -19,6 +19,7 @@ Om mängden är tom returneras null. */
 Node* removeMin();
 private:
 bool contains(std::string a);
+
 std::vector<Node*> nodes;
 
 };
