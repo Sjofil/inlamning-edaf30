@@ -2,7 +2,8 @@
 #include <cassert>
 #include <iostream>
 #include "Node.h"
-
+using std::cout;
+using std::endl;
 void test()
 {
     NodeSet ns{};
@@ -14,18 +15,16 @@ void test()
     Node c("C");
     c.setValue(30);
 
+    
     ns.add(&a);
     ns.add(&b);
     ns.add(&c);
-    std::cout << "added abc \n";
-    std::cout << ns.removeMin()->getValue();
-
+ 
+   
 
     assert(ns.removeMin() == &a);
-    std::cout << "begin testing";
     assert(ns.removeMin() == &b);
     assert(ns.removeMin() == &c);
-    std::cout << "removeMin() working fine";
     assert(ns.isEmpty());
 
     ns.add(&a);
