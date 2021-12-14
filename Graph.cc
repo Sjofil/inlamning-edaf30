@@ -8,8 +8,40 @@
 #include "Node.h"
 #include "Edge.h"
 #include "NodeSet.h"
+#include <string>
+#include <sstream>
 
-Graph::Graph(){};
+using std::string;
+
+Graph::Graph(){}
+
+Graph::Graph(std::istream& in){
+    string line;
+    string dest;
+    int length;
+    string name;
+    while(getline(in, line)){
+        //skapar en stringstream av varje rad för att kunna extrahera ort, destination och sträcka. trimmar av ":"
+        std::stringstream ss;
+        ss << line;
+        ss >> name;
+        name=name.substr(0, name.length() -1);
+
+        ss >> length;
+
+        getline(ss, dest);
+        //tar bort överflödigt space
+        dest.erase(dest.begin());
+        //lägg till båda noderna, om de redan finns händer inget och funktionen är i princip gratis så onödigt med massa if-satser
+        addNode(name);
+        addNode(dest);
+        //hämta ut pekare på node-objektet och lägg till edge
+        Node* node=find(name);
+        
+        node->addEdge(find(dest), length);
+        dest.clear();
+    }
+}
 
 void Graph::addNode(const std::string &name){
    

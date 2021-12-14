@@ -5,10 +5,13 @@
 #include <vector>
 #include <limits>
 #include <string>
+#include <memory>
 
 class Graph{
     public:
         Graph();
+        /** Skapar en graf med noder och bågar som läses från strömmen in. */
+        Graph(std::istream& in);
         void addNode(const std::string &name);
         Node* find(const std::string &name);
         void resetVals();
@@ -16,6 +19,7 @@ class Graph{
         std::vector<std::unique_ptr<Node>>::iterator end(){return store_nodes.end();};
     private:
         std::vector<std::unique_ptr<Node>> store_nodes;
+        
 
 
 };

@@ -1,0 +1,7 @@
+Lund: 12 Dalby
+Lund: 12 Sodra Sandby
+Dalby: 12 Sodra Sandby
+Dalby: 5 Torna Hallestad
+Dalby: 12 Lund
+Dalby: 11 Veberod
+Veberod: 11 Dalby
