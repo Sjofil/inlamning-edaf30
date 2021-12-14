@@ -7,3 +7,5 @@ Alla noder förutsätts, när funktionen anropas, ha ett värde som är
 större än alla faktiska avstånd i grafen.
 */
 void dijkstra(Node* start);
+
+void general_dijkstra(Node* start);

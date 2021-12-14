@@ -22,14 +22,12 @@ Bågen ska ha längden length. */
 void addEdge(Node* destination, int length);
 /** Hämtar de bågar som utgår från denna nod. */
 std::vector<Edge>& getEdges();
-/** Hämtar "parent" node */
+/** Hämtar nodens förälder nod */
 Node * getParentNode();
-/** Sätter "parent" nodens värde */
+/** Sätter förälder nodens värde */
 void setParentNode(Node * &node);
 
-
 static const int max_value=std::numeric_limits<int>::max();
-
 
 private:
 Node * parent{nullptr};

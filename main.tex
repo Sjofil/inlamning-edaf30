@@ -1,0 +1,136 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+ 
+\usepackage{array}
+\usepackage{makecell}
+
+% ---- Commands ------- %
+\newcommand{\documentNumber}[1]{
+    \LARGE  \textbf{Inlämningsuppgift}
+    \\
+    \medskip
+}
+\graphicspath{ {./images/} }
+\newcommand{\documentVersion}[1]{
+    \medskip
+}
+\newcommand{\documentTitle}[1]{
+    \centerline{\rule{13cm}{0.4pt}}
+    \bigskip \bigskip
+    \LARGE \textbf{EDAF30} \\
+    \bigskip
+    \LARGE {#1} \\
+    \bigskip \bigskip
+    \centerline{\rule{13cm}{0.4pt}}
+}
+
+\newcommand{\documentDate}[1]{
+    \date {#1} 
+}
+
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[5pt]}
+\renewcommand\cellgape{\Gape[5pt]}
+
+
+
+\pagestyle{fancy}
+\lhead{\leftmark}
+\rhead{}
+\rfoot{\thepage}
+\cfoot{}
+\lfoot{}
+
+
+% ------------------------------------------------ #
+
+% ----- FILL THIS ----- %
+\title {
+    \documentNumber {01}    
+
+    % Full name - SHORTNAME
+    \documentTitle {Dijkstras algoritm}
+    
+  
+    
+\author{Filip Sjövall - Oscar Blixt}
+
+
+
+}
+
+%\author{
+% Filip Sjövall\\
+%  \and
+ % Oscar Blixt\\
+%}
+
+
+
+
+
+
+\begin{document}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+\maketitle
+%%\end{document}
+\thispagestyle{empty}
+
+
+\newpage
+
+\section*{Övergripande design}
+
+Det inlämnade programmet innehåller fyra stycken klasser: Node, Egde, Nodeset samt Graph. Utöver dessa kommer programmet även med två stycken fira funktioner dijkstra samt generalDijsktra. Samtliga klasser och funtkioner kommer beskrivas nedan.
+
+\subsection*{Node}
+Denna klassen innehåller algoritemns noder. Noderna har ett namn(\textit{string}), ett värde(\textit{int}) samt en pekare till nodens förälder(\textit{Node}). Nodens värde är den totala kostanden det tar att gå från en startnod till den valda noden. Nodens förälder används för att spara undan information var noden befann sig i ett tidigare stadie i programmet. 
+\begin{itemize}
+    \item Hej
+\end{itemize}
+
+
+\subsection*{Edge}
+Denna klassen innehåller algoritmens bågar. Bågarna har en längd(int) samt en destination(\textit{string}). Men hjälp av medlemsfunktionen \textit{addEdge} från \textit{Node} klassen kan man lägga till en båge som sträcker sig från en nod till en annan. Denna bågen används i algoritmen för att beräkna den totala kostnaden det tar att röra sig från en nod till en annan.
+
+\subsection*{Nodeset}
+Denna klassen ska innehåller en mängd av noder. Mängen har implementerats med en vektor av typen \textit{Node}. Med medlmensfunktionen removeMin kan den noden med lägst värde retuneras vilket också är vad funktionen används för i algoritmen, att hitta de närmast liggande noderna.
+
+\subsection*{Graph}
+Denna klassen innehåller funktion för att läsa in ett godtyckligt antal noder och bågar från en separat text fil med rader enligt: "Nod: kostnad destination". Denna information sparas i en vektor av typen \textit{Node}.
+
+\subsection*{Dijkstra}
+Funktionen används som en specifik lösning av dijkstras algoritm som hittar den kortaste vägen från en destination till en annan utifrån kostand från klassen \textit{Edge}.
+
+\subsection*{generalDijkstra}
+Funktionen används som en generaliserad lösning av dijkstras algoritm som hittar den kortaste vägen från en destination till en annan utifrån vad en...
+
+\section*{Användarinstruktioner}
+Källkoden finns paketerad i en zip-fil. När denna har har extraherats kan filerna länkas och kompileras med hjälp av kommandot \textit{make}. Efter detta kan programmer exekveras enligt av två valmöjligheter.
+\begin{enumerate}
+    \item Kommandot \textit{make premadeTest} kör endast färdigskrivna tester.
+    \item Kommandot \textit{make ourTest} kör endast de tester som tagits fram utöver de färdigskrivna tester. 
+\end{enumerate}
+
+
+\section*{Brister och kommentarer}
+
+
+
+
+
+
+
+
+
+\bibliographystyle{alpha}
+
+
+\end{document}

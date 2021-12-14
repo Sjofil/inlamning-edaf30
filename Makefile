@@ -31,6 +31,19 @@ test_nodeset:  Node.o Edge.o NodeSet.o test_nodeset.o
 test_dijkstra: Node.o Edge.o NodeSet.o test_dijkstra.o
 test_graph_file: Node.o Edge.o NodeSet.o Graph.o test_graph_file.o
 
+premadeTest:
+	./test_nodeset
+	./test_graph_small
+	./test_graph_nofile
+	./test_dijkstra
+
+ourTest:
+	./test_graph_file
+	./test_ourTests
+
+
+
+
 
 # Phony targets
 .PHONY: all test clean distclean

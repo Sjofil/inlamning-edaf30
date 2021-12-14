@@ -60,7 +60,6 @@ void test_graph()
         assert((*it)->getValue() == Node::max_value);
     }
 
-
     cout << "test_graph passed" << endl;
 }
 
