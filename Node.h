@@ -32,7 +32,7 @@ static const int max_value=std::numeric_limits<int>::max();
 
 
 private:
-Node * parent;
+Node * parent{nullptr};
 std::string name;
 int value{max_value};
 std::vector<Edge> edges;
