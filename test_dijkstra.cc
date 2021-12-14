@@ -27,8 +27,8 @@ void test()
     hallestad.addEdge(&veberod,8);
 
     dijkstra(&lund);
-    
-    cout << lund.getParentNode() << "\n";
+
+   
 
     assert(lund.getValue() == 0);
     assert(dalby.getValue() == 12);
@@ -36,8 +36,6 @@ void test()
     assert(hallestad.getValue() == 17);
     assert(veberod.getValue() == 23);
     assert(flyinge.getValue() == 16);
-
-
 
     cout << "----\nAll distances from Lund:\n";
 
@@ -55,6 +53,8 @@ void dijkstra(Node* start){
     //Låt start vara noden vi vill räkna avstånd från. Sätt start:s värde till 0.
     start->setValue(0);
     NodeSet S{};
+    //Behövs senare för att skriva ut vägen till destinationen.
+    Node *destination;
 
     //Låt S vara en mängd av noder. Inledningsvis ska S innehålla en enda nod, nämligen start.
     S.add(start);
@@ -71,16 +71,35 @@ void dijkstra(Node* start){
             //Låt a vara summan av n:s värde och l.
             int a=n->getValue()+l;
             //Om a är mindre än d:s värde: ändra d:s värde till a, och lägg in d i mängden S.
+            
             if(a<d->getValue()){
                 d->setValue(a);
                 d->setParentNode(n);
                 S.add(d);
+                //Hittar vägen till parentnode
+                destination = d;
+                std::vector<Node*> store_nodes;
+                while (destination != nullptr){
+                   store_nodes.push_back(destination);
+                    destination = destination->getParentNode();
+                }
+                //utskrift
+                while(store_nodes.size() != 0){
+                    Node * temp = store_nodes.back();
+                    cout << temp->getName() << " ";
+                    store_nodes.pop_back();
+                }
+                cout << d->getValue() <<  "\n";
+                {
+                    /* code */
+                }
+                
             }
         }
     }
-
 }
-
+      
+ 
 int main()
 {
     test();

@@ -15,6 +15,13 @@ void Node::addEdge(Node* destination, int length){edges.push_back(Edge(destinati
 
 std::vector<Edge>& Node::getEdges(){return edges;}
 
-Node * Node::getParentNode(){return parent;}
+Node * Node::getParentNode(){
+    
+    if(parent == nullptr){
+        return nullptr;
+    }else{
+        return parent;
+    }
+    }
 
 void Node::setParentNode(Node * &node){ parent = node; }
