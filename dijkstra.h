@@ -12,4 +12,4 @@ void dijkstra(Node* start);
 void generalDijkstra(Node* start);
 
 /** Hjälpmetod för att skriva ut den kortaste vägen från en destination */
-void print_shortest_path(Node *start, Node *dest);
+void print_shortest_path(Node *dest);

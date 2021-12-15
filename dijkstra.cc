@@ -30,15 +30,16 @@ void dijkstra(Node* start){
                 d->setValue(a);
                 d->setParentNode(n);
                 S.add(d);
-                print_shortest_path(n, d);
+                print_shortest_path(d);
                 
             }
         }
     }
 }
 
-void print_shortest_path(Node *start, Node *dest){
+void print_shortest_path(Node *dest){
      std::vector<Node*> store_nodes;
+     int length=dest->getValue();
                 while (dest != nullptr){
                    store_nodes.push_back(dest);
                     dest = dest->getParentNode();
@@ -49,6 +50,6 @@ void print_shortest_path(Node *start, Node *dest){
                     cout << temp->getName() << " ";
                     store_nodes.pop_back();
                 }
-                cout << start->getValue() <<  "\n";
+                cout << length <<  "\n";
 }
 
