@@ -2,13 +2,11 @@
 #include <fstream>
 #include <string>
 #include <cassert>
-#include "Graph.h"
 #include <algorithm>
 #include <utility>
 #include <set>
-#include "Node.h"
-#include "Edge.h"
-#include "NodeSet.h"
+#include "Graph.h"
+
 
 void find_and_test(const std::string& name, Graph& g){
     Node* n=g.find(name);

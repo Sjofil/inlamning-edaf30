@@ -1,16 +1,13 @@
 #include <iostream>
 #include <cassert>
-
-#include "dijkstra.h"
 #include "Node.h"
-#include "NodeSet.h"
-#include "Edge.h"
 #include "dijkstra.cc"
 using std::cout;
 using std::endl;
 
 void test()
 {
+    bool print_shortest = false;
     Node lund{"Lund"};
     Node dalby{"Dalby"};
     Node sandby{"Sodra Sandby"};
@@ -27,7 +24,7 @@ void test()
     sandby.addEdge(&flyinge,4);
     hallestad.addEdge(&veberod,8);
 
-    dijkstra(&lund);
+    dijkstra(&lund, print_shortest);
 
    
 

@@ -1,5 +1,5 @@
-#ifndef NODESET_H
-#define NODESET_H
+#ifndef __NODESET_H
+#define __NODESET_H
 #include <vector>
 #include <string>
 

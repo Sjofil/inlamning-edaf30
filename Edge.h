@@ -1,6 +1,8 @@
-#ifndef EDGE_H
-#define EDGE_H
+#ifndef __EDGE_H
+#define __EDGE_H
+
 #include "Node.h"
+
 class Node;
 class Edge{
 public:

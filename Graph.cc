@@ -1,14 +1,10 @@
 #include <iostream>
-#include <string>
 #include <cassert>
 #include "Graph.h"
 #include <algorithm>
 #include <utility>
 #include <set>
-#include "Node.h"
-#include "Edge.h"
 #include "NodeSet.h"
-#include <string>
 #include <sstream>
 
 using std::string;

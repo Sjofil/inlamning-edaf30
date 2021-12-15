@@ -1,5 +1,4 @@
 #include "Edge.h"
-#include "Node.h"
 
 using std::string;
 

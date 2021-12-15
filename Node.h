@@ -1,9 +1,10 @@
-#ifndef NODE_H
-#define NODE_H
+#ifndef __NODE_H
+#define __NODE_H
 #include "Edge.h"
 #include <string>
 #include <vector>
 #include <limits>
+
 
 class Edge;
 

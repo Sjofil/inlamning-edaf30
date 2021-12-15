@@ -1,14 +1,9 @@
-#include <iostream>
-#include <cassert>
 
-
-#include "Node.h"
-#include "NodeSet.h"
-#include "Edge.h"
-
-#include "generalDijkstra.cc"
+#include "dijkstra.h"
+#include "dijkstra.cc"
 using std::cout;
 using std::endl;
+
 
 //samma algoritm som tidigare
 int getCost(Node* n, Edge& e){
@@ -50,8 +45,9 @@ int getCostNbrChars(Node* n, Edge& e){
     
 }
 
-void test()
+void test_generalDijk_nbrChar()
 {
+    bool print_shortest = false;
     Node lund{"Lund"};
     Node dalby{"Dalby"};
     Node sandby{"Sodra Sandby"};
@@ -69,29 +65,84 @@ void test()
     hallestad.addEdge(&veberod,8);
 
 
+    generalDijkstra(&lund, getCostNbrChars, print_shortest);
+    assert(dalby.getValue() == 9);
+    assert(sandby.getValue() == 16);
+    assert(hallestad.getValue() == 24);
 
-
-    
-    cout << "test_dijkstra passed" << endl;
-
-    generalDijkstra(&lund, getCostNbrChars);
-    
-    cout << "----\nAll distances from Lund:\n";
-
-    for(auto& t : {lund, dalby, sandby, hallestad, veberod, flyinge}) {
-        cout << t.getName() << " : " << t.getValue() << " ";
-        cout << endl;
-    }
-
-    cout << "test_dijkstra passed" << endl;
+    cout << "test_generalDijk_nbrChar passed" << endl;
 
    
 }
 
+void  test_generalDijk_cost()
+{
+    bool print_shortest = false;
 
+ Node lund{"Lund"};
+    Node dalby{"Dalby"};
+    Node sandby{"Sodra Sandby"};
+    Node hallestad{"Torna Hallestad"};
+    Node flyinge{"Flyinge"};
+    Node veberod{"Veberod"};
+
+    lund.addEdge(&dalby,12);
+    lund.addEdge(&sandby,12);
+    dalby.addEdge(&sandby,12);
+    dalby.addEdge(&veberod,11);
+    dalby.addEdge(&hallestad,5);
+    sandby.addEdge(&lund,12);
+    sandby.addEdge(&flyinge,4);
+    hallestad.addEdge(&veberod,8);
+
+
+    generalDijkstra(&lund, getCost,print_shortest);
+    assert(lund.getValue() == 0);
+    assert(dalby.getValue() == 12);
+    assert(sandby.getValue() == 12);
+    assert(hallestad.getValue() == 17);
+    assert(veberod.getValue() == 23);
+    assert(flyinge.getValue() == 16);
+   
+    cout << "test_generalDijk_cost passed" << endl;
+}
+
+void test_generalDijk_parentNodes()
+{
+    bool print_shortest = false;
+    Node lund{"Lund"};
+    Node dalby{"Dalby"};
+    Node sandby{"Sodra Sandby"};
+    Node hallestad{"Torna Hallestad"};
+    Node flyinge{"Flyinge"};
+    Node veberod{"Veberod"};
+
+    lund.addEdge(&dalby,12);
+    lund.addEdge(&sandby,12);
+    dalby.addEdge(&sandby,12);
+    dalby.addEdge(&veberod,11);
+    dalby.addEdge(&hallestad,5);
+    sandby.addEdge(&lund,12);
+    sandby.addEdge(&flyinge,4);
+    hallestad.addEdge(&veberod,8);
+
+
+    generalDijkstra(&lund, getCostParentNodes,print_shortest);
+    assert(lund.getValue() == 0);
+    assert(dalby.getValue() == 1);
+    assert(sandby.getValue() == 1);
+    assert(hallestad.getValue() == 2);
+   
+
+    cout << "test_generalDijk_parentNodes passed" << endl;
+
+}
 
 int main()
 {
-    test();
+    test_generalDijk_nbrChar();
+    test_generalDijk_parentNodes();
+    test_generalDijk_cost();
+
     return 0;
 }

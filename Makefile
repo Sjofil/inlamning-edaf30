@@ -21,7 +21,7 @@ LDFLAGS =   -g
 #LDFLAGS +=  -stdlib=libc++
 
 # Targets
-PROGS = test_graph_small test_nodeset test_dijkstra test_graph_nofile test_graph_file test_generalDijk
+PROGS = test_graph_small test_nodeset test_dijkstra test_graph_nofile test_graph_file test_generalDijk main
 
 all: $(PROGS)
 
@@ -30,7 +30,8 @@ test_graph_small: Node.o Edge.o test_graph_small.o
 test_nodeset:  Node.o Edge.o NodeSet.o test_nodeset.o
 test_dijkstra: Node.o Edge.o NodeSet.o test_dijkstra.o
 test_graph_file: Node.o Edge.o NodeSet.o Graph.o test_graph_file.o
-test_generalDijk: Node.o Edge.o NodeSet.o test_generalDijk
+test_generalDijk: Node.o Edge.o NodeSet.o test_generalDijk.o
+main: Node.o Edge.o NodeSet.o main.o
 
 premadeTest:
 	./test_nodeset
@@ -40,8 +41,10 @@ premadeTest:
 
 ourTest:
 	./test_graph_file
-	./test_ourTests
 	./test_generalDijk
+
+main_program:
+	./main
 
 
 

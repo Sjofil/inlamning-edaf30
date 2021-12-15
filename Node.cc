@@ -1,7 +1,5 @@
 #include "Node.h"
-#include <string>
-#include <vector>
-#include <limits>
+
 using std::string;
 Node::Node(const std::string& name):name(name){}
 
@@ -16,7 +14,6 @@ void Node::addEdge(Node* destination, int length){edges.push_back(Edge(destinati
 std::vector<Edge>& Node::getEdges(){return edges;}
 
 Node * Node::getParentNode(){
-    
     if(parent == nullptr){
         return nullptr;
     }else{
