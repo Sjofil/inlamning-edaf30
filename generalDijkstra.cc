@@ -5,7 +5,7 @@
 using namespace::std;
 
 
-void dijkstra(Node* start){
+void generalDijkstra(Node* start){
 
     //Låt start vara noden vi vill räkna avstånd från. Sätt start:s värde till 0.
     start->setValue(0);
@@ -51,4 +51,3 @@ void print_shortest_path(Node *start, Node *dest){
                 }
                 cout << start->getValue() <<  "\n";
 }
-

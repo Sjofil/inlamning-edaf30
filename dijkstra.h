@@ -9,7 +9,7 @@ större än alla faktiska avstånd i grafen.
 void dijkstra(Node* start);
 
 
-void general_dijkstra(Node* start);
+void generalDijkstra(Node* start);
 
 /** Hjälpmetod för att skriva ut den kortaste vägen från en destination */
 void print_shortest_path(Node *start, Node *dest);
