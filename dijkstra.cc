@@ -34,11 +34,18 @@ void dijkstra(Node* start){
                 d->setParentNode(n);
                 S.add(d);
                 //Hittar vägen till parentnode
-                destination = d;
-                std::vector<Node*> store_nodes;
-                while (destination != nullptr){
-                   store_nodes.push_back(destination);
-                    destination = destination->getParentNode();
+                print_shortest_path(n, d);
+                
+            }
+        }
+    }
+}
+
+void print_shortest_path(Node *start, Node *dest){
+     std::vector<Node*> store_nodes;
+                while (dest != nullptr){
+                   store_nodes.push_back(dest);
+                    dest = dest->getParentNode();
                 }
                 //utskrift
                 while(store_nodes.size() != 0){
@@ -46,11 +53,10 @@ void dijkstra(Node* start){
                     cout << temp->getName() << " ";
                     store_nodes.pop_back();
                 }
-                cout << d->getValue() <<  "\n";
-                
-            }
-        }
-    }
+                cout << start->getValue() <<  "\n";
+
+
+
 }
 
 void general_dijkstra(Node* start){
