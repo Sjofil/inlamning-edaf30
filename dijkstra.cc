@@ -2,7 +2,7 @@
 #include "NodeSet.h"
 #include <iostream>
 #include <vector>
-using namespace::std;
+using std::cout;
 
 
 void dijkstra(Node* start){

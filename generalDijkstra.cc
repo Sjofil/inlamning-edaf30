@@ -5,7 +5,7 @@
 using namespace::std;
 
 
-void generalDijkstra(Node* start){
+void generalDijkstra(Node* start, int (*f)(Node*, const Edge&)){
 
     //Låt start vara noden vi vill räkna avstånd från. Sätt start:s värde till 0.
     start->setValue(0);
@@ -20,25 +20,22 @@ void generalDijkstra(Node* start){
         //Gå igenom de bågar som utgår från n. För var och en av dessa bågar, gör följande:
         for(Edge e:n->getEdges()){
             //Kalla bågens längd för l och dess destination för d
-            int l=e.getLength();
+            int a=f(n, e);
             Node* d=e.getDestination();
-            //Låt a vara summan av n:s värde och l.
-            int a=n->getValue()+l;
-            //Om a är mindre än d:s värde: ändra d:s värde till a, och lägg in d i mängden S.
-            
             if(a<d->getValue()){
                 d->setValue(a);
                 d->setParentNode(n);
                 S.add(d);
-                print_shortest_path(n, d);
+                print_shortest_path(d);
                 
             }
         }
     }
 }
 
-void print_shortest_path(Node *start, Node *dest){
+void print_shortest_path(Node *dest){
      std::vector<Node*> store_nodes;
+     int length=dest->getValue();
                 while (dest != nullptr){
                    store_nodes.push_back(dest);
                     dest = dest->getParentNode();
@@ -49,5 +46,5 @@ void print_shortest_path(Node *start, Node *dest){
                     cout << temp->getName() << " ";
                     store_nodes.pop_back();
                 }
-                cout << start->getValue() <<  "\n";
+                cout << length <<  "\n";
 }
