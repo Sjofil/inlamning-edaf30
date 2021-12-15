@@ -10,9 +10,6 @@ void dijkstra(Node* start){
     //Låt start vara noden vi vill räkna avstånd från. Sätt start:s värde till 0.
     start->setValue(0);
     NodeSet S{};
-    //Behövs senare för att skriva ut vägen till destinationen.
-    Node *destination;
-
     //Låt S vara en mängd av noder. Inledningsvis ska S innehålla en enda nod, nämligen start.
     S.add(start);
 
@@ -33,7 +30,6 @@ void dijkstra(Node* start){
                 d->setValue(a);
                 d->setParentNode(n);
                 S.add(d);
-                //Hittar vägen till parentnode
                 print_shortest_path(n, d);
                 
             }
@@ -54,9 +50,6 @@ void print_shortest_path(Node *start, Node *dest){
                     store_nodes.pop_back();
                 }
                 cout << start->getValue() <<  "\n";
-
-
-
 }
 
 void general_dijkstra(Node* start){
