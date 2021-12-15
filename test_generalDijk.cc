@@ -11,7 +11,7 @@ using std::cout;
 using std::endl;
 
 //samma algoritm som tidigare
-int getCost(Node* n, const Edge& e){
+int getCost(Node* n, Edge& e){
     //Kalla bågens längd för l och dess destination för d
             int l=e.getLength();
             
@@ -23,7 +23,7 @@ int getCost(Node* n, const Edge& e){
 
 //här räknas value ut genom antal föräldranoder istället.
 
-int getCostParentNodes(Node* n, const Edge& e){
+int getCostParentNodes(Node* n, Edge& e){
     //spara antal föräldranoder istället för längden
     int cost=0;
     while(n!=nullptr){
@@ -33,6 +33,22 @@ int getCostParentNodes(Node* n, const Edge& e){
     return cost;
 }
 
+//här räknas kostnaden ut genom totalt antal tecken i färdvägen
+
+int getCostNbrChars(Node* n, Edge& e){
+    int cost=0;
+
+    while (n!=nullptr)
+    {
+        cost+=n->getName().size();
+        n=n->getParentNode();
+    }
+   
+    
+    cost+=e.getDestination()->getName().size();
+    return cost;
+    
+}
 
 void test()
 {
@@ -52,20 +68,13 @@ void test()
     sandby.addEdge(&flyinge,4);
     hallestad.addEdge(&veberod,8);
 
-    generalDijkstra(&lund, getCost);
 
-   
 
-    cout << "----\nAll distances from Lund:\n";
 
-    for(auto& t : {lund, dalby, sandby, hallestad, veberod, flyinge}) {
-        cout << t.getName() << " : " << t.getValue() << " ";
-        cout << endl;
-    }
-
+    
     cout << "test_dijkstra passed" << endl;
 
-    generalDijkstra(&lund, getCostParentNodes);
+    generalDijkstra(&lund, getCostNbrChars);
     
     cout << "----\nAll distances from Lund:\n";
 
@@ -75,6 +84,8 @@ void test()
     }
 
     cout << "test_dijkstra passed" << endl;
+
+   
 }
 
 

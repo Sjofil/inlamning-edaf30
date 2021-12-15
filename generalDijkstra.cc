@@ -5,7 +5,7 @@
 using namespace::std;
 
 
-void generalDijkstra(Node* start, int (*f)(Node*, const Edge&)){
+void generalDijkstra(Node* start, int (*f)(Node*, Edge&)){
 
     //Låt start vara noden vi vill räkna avstånd från. Sätt start:s värde till 0.
     start->setValue(0);
