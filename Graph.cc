@@ -20,23 +20,31 @@ Graph::Graph(std::istream &in)
     while (getline(in, line))
     {
         //skapar en stringstream av varje rad för att kunna extrahera ort, destination och sträcka. trimmar av ":"
+        string fullname;
         std::stringstream ss;
         ss << line;
-        ss >> name;
-        name = name.substr(0, name.length() - 1);
 
+        ss >> name;
+        while(name.find(":") == name.npos){
+            fullname += name;
+            ss >> name;
+        }
+
+        fullname += name.substr(0, name.length() - 1);
+        //Efter fullname tar vi längden
         ss >> length;
 
         getline(ss, dest);
-        //tar bort överflödigt space
-        dest.erase(dest.begin());
+        //tar bort överflödigt blanksteg i början av ordet
+        dest.erase(dest.begin(), dest.begin()+1);
         //lägg till båda noderna, om de redan finns händer inget och funktionen är i princip gratis så onödigt med massa if-satser
-        addNode(name);
+        addNode(fullname);
         addNode(dest);
         //hämta ut pekare på node-objektet och lägg till edge
-        Node *node = find(name);
+        Node *node = find(fullname);
 
         node->addEdge(find(dest), length);
+       
         dest.clear();
     }
 }

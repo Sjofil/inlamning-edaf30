@@ -23,6 +23,7 @@ void test_graph(){
     find_and_test("Lund", g);
     find_and_test("Dalby", g);
     find_and_test("Veberod", g);
+    find_and_test("Torna Hallestad", g);
 
 }
 
