@@ -124,7 +124,7 @@ Källkoden finns paketerad i en zip-fil. När denna har har extraherats kan file
 Kommandot \textit{make mainProgram} kör endast två av tre olika möjligheter till funktioner som skrivits till användning till generalDijkstra. \\
 
 \subsection*{Brister}
-Klassen \textit{Graph} har medlemsfunktionen \textit{addNode}, denna funktionen skapar dynamiskt en ny \textit{unique$\_$poiner<Node>} vilken kan leda till minnesläckor om den som anropar metoden ej frigör objektet från heapen. 
+Klassen \textit{Graph} har medlemsfunktionen \textit{addNode}, denna funktionen skapar dynamiskt en ny \textit{Node} i konstruktorn av en \textit{unique$\_$poiner}, detta kan leda till minnesläckor om den som anropar metoden ej frigör objektet från heapen. \\
 Möjligt att skriva testfall som testar fler aspekter av programmet. En annan brist som kan läggas märke till är de varningar som ges när programmet länkas och kompileras med \textit{make}. Funktionen som skickas in i generalDijkstra kräver objekt av typen \textit{Node} och \textit{Edge}, det är däremot inte säkert att användaren väljer att använda båda objekten vilket skapar varningar.
 
 
