@@ -43,7 +43,7 @@ ourTest:
 	./test_graph_file
 	./test_generalDijk
 
-main_program:
+mainProgram:
 	./main
 
 

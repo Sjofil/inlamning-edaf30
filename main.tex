@@ -88,39 +88,44 @@
 
 \section*{Övergripande design}
 
-Det inlämnade programmet innehåller fyra stycken klasser: Node, Egde, Nodeset samt Graph. Utöver dessa kommer programmet även med två stycken fira funktioner dijkstra samt generalDijsktra. Samtliga klasser och funtkioner kommer beskrivas nedan.
+Det inlämnade programmet innehåller fyra stycken klasser: Node, Egde, Nodeset samt Graph. Utöver dessa kommer programmet även med två stycken fria funktioner, dijkstra samt generalDijsktra. Samtliga klasser och funktioner kommer beskrivas nedan.
 
 \subsection*{Node}
-Denna klassen innehåller algoritemns noder. Noderna har ett namn(\textit{string}), ett värde(\textit{int}) samt en pekare till nodens förälder(\textit{Node}). Nodens värde är den totala kostanden det tar att gå från en startnod till den valda noden. Nodens förälder används för att spara undan information var noden befann sig i ett tidigare stadie i programmet. 
-\begin{itemize}
-    \item Hej
-\end{itemize}
+Denna klassen innehåller algoritemns noder. Noderna har ett namn, ett värde samt en pekare till nodens förälder. Nodens värde är den totala kostanden det tar att gå från en startnod till en destinationsnod. Nodens förälder används för att spara undan information var noden befann sig i ett tidigare stadie i programmet. 
 
 
 \subsection*{Edge}
-Denna klassen innehåller algoritmens bågar. Bågarna har en längd(int) samt en destination(\textit{string}). Men hjälp av medlemsfunktionen \textit{addEdge} från \textit{Node} klassen kan man lägga till en båge som sträcker sig från en nod till en annan. Denna bågen används i algoritmen för att beräkna den totala kostnaden det tar att röra sig från en nod till en annan.
+Denna klassen innehåller algoritmens bågar. Bågarna har en längd samt en destination. Men hjälp av medlemsfunktionen \textit{addEdge} från \textit{Node} klassen kan man lägga till en båge som sträcker sig från en nod till en annan. Denna bågen används i algoritmen för att beräkna den totala kostnaden det tar att röra sig från en nod till en annan.
 
 \subsection*{Nodeset}
-Denna klassen ska innehåller en mängd av noder. Mängen har implementerats med en vektor av typen \textit{Node}. Med medlmensfunktionen removeMin kan den noden med lägst värde retuneras vilket också är vad funktionen används för i algoritmen, att hitta de närmast liggande noderna.
+Denna klassen ska innehåller en mängd av noder. Mängen har implementerats med en vektor av typen \textit{Node}. Med medlmensfunktionen removeMin kan den noden med lägst värde retuneras, detta är också vad funktionen används för i algoritmen.
 
 \subsection*{Graph}
-Denna klassen innehåller funktion för att läsa in ett godtyckligt antal noder och bågar från en separat text fil med rader enligt: "Nod: kostnad destination". Denna information sparas i en vektor av typen \textit{Node}.
+Denna klassen innehåller funktion för att läsa in ett godtyckligt antal noder och bågar från en separat text fil med rader uppbyggda enligt: "Nod: kostnad destination". Denna information sparas i en vektor av typen \textit{Node}.
 
 \subsection*{Dijkstra}
-Funktionen används som en specifik lösning av dijkstras algoritm som hittar den kortaste vägen från en destination till en annan utifrån kostand från klassen \textit{Edge}.
+Funktionen används som en specifik lösning av dijkstras algoritm som hittar den kortaste vägen från en destination till en annan utifrån kostand enligt klassen \textit{Edge}.
 
 \subsection*{generalDijkstra}
-Funktionen används som en generaliserad lösning av dijkstras algoritm som hittar den kortaste vägen från en destination till en annan utifrån vad en...
+Funktionen används som en generaliserad lösning av dijkstras algoritm som hittar den kortaste vägen från en destination till en annan utifrån valfri funktion.
 
 \section*{Användarinstruktioner}
-Källkoden finns paketerad i en zip-fil. När denna har har extraherats kan filerna länkas och kompileras med hjälp av kommandot \textit{make}. Efter detta kan programmer exekveras enligt av två valmöjligheter.
+Källkoden finns paketerad i en zip-fil. När denna har har extraherats kan filerna länkas och kompileras med hjälp av kommandot \textit{make}. Efter detta kan programmet exekveras enligt valmöjligheterna nedan.
 \begin{enumerate}
-    \item Kommandot \textit{make premadeTest} kör endast färdigskrivna tester.
-    \item Kommandot \textit{make ourTest} kör endast de tester som tagits fram utöver de färdigskrivna tester. 
+    \item Kommandot \textit{make premadeTest} kör endast färdigskrivna tester. Dessa inkluderar \textit{test$\_$graph$\_$nofile}, \textit{test$\_$graph$\_$small}, \textit{test$\_$nodeset} och \textit{test$\_$dijkstra}
+    \item Kommandot \textit{make ourTest} exekverar endast de tester som tagits fram utöver de färdigskrivna tester. Dessa inkluderar \textit{test$\_$graph$\_$file} och \textit{test$\_$generalDijk} 
+    \item Kommandot \textit{make mainProgram} exekverar ett program som är till för att demonstrera hur programmet är tänk att fungera. 
+    \item Kommandot \textit{make clean} tar bort samtliga filer som skapats vid kompilering med kommandot \textit{make}.
 \end{enumerate}
 
 
 \section*{Brister och kommentarer}
+\subsection*{Kommentarer}
+Kommandot \textit{make mainProgram} kör endast två av tre olika möjligheter till funktioner som skrivits till användning till generalDijkstra. \\
+
+\subsection*{Brister}
+Klassen \textit{Graph} har medlemsfunktionen \textit{addNode}, denna funktionen skapar dynamiskt en ny \textit{unique$\_$poiner<Node>} vilken kan leda till minnesläckor om den som anropar metoden ej frigör objektet från heapen. 
+Möjligt att skriva testfall som testar fler aspekter av programmet. En annan brist som kan läggas märke till är de varningar som ges när programmet länkas och kompileras med \textit{make}. Funktionen som skickas in i generalDijkstra kräver objekt av typen \textit{Node} och \textit{Edge}, det är däremot inte säkert att användaren väljer att använda båda objekten vilket skapar varningar.
 
 
 
